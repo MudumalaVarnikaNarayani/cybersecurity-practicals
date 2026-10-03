@@ -1,3 +1,11 @@
+# Cybersecurity Practicals
+
+Hands-on cybersecurity and networking practicals completed as part of my cybersecurity learning journey.
+
+This repository documents practical exercises, commands, observations, and concepts learned through hands-on practice.
+
+---
+
 # Practical 01 — Ping & ICMP
 
 ## Objective
@@ -8,22 +16,22 @@ To understand **ICMP (Internet Control Message Protocol)** and use the `ping` co
 
 ## What is ICMP?
 
-**ICMP** is a network-layer protocol used for network error reporting and diagnostics.
+**ICMP (Internet Control Message Protocol)** is a network-layer protocol used for network error reporting and network diagnostics.
 
-The `ping` command uses ICMP **Echo Request** and **Echo Reply** messages to test whether a destination responds to network requests.
+The `ping` command uses ICMP **Echo Request** and **Echo Reply** messages to test whether a destination responds.
 
 ### Basic Flow
 
 ```text
-My Computer
-     |
-     | ICMP Echo Request
-     ↓
+Computer
+   |
+   | ICMP Echo Request
+   ↓
 Destination
-     |
-     | ICMP Echo Reply
-     ↓
-My Computer
+   |
+   | ICMP Echo Reply
+   ↓
+Computer
 ```
 
 ---
@@ -38,9 +46,9 @@ My Computer
 
 ---
 
-# Practical Tests
+# Practical Exercises
 
-## 1. Basic Ping Test
+## 1. Basic Ping
 
 ### Command
 
@@ -50,7 +58,7 @@ ping google.com
 
 ### Purpose
 
-To test basic connectivity to a domain and observe response time and packet loss.
+To test connectivity to a domain and observe response time and packet loss.
 
 ### Result
 
@@ -61,9 +69,7 @@ To test basic connectivity to a domain and observe response time and packet loss
 
 ### Observation
 
-The destination responded successfully with **0% packet loss**.
-
-![Basic Ping](screenshots/ping-google.png)
+The destination responded successfully with 0% packet loss.
 
 ---
 
@@ -88,9 +94,7 @@ To test connectivity to a public IP address.
 
 ### Observation
 
-The destination responded successfully with **0% packet loss**.
-
-![Public IP Ping](screenshots/ping-public-ip.png)
+The destination responded successfully with 0% packet loss.
 
 ---
 
@@ -116,13 +120,11 @@ To test connectivity between the computer and the local network gateway.
 
 The local gateway responded successfully to the ICMP requests.
 
-> The actual local gateway address is intentionally not included in this README for privacy.
-
-![Gateway Ping](screenshots/ping-gateway.png)
+> The actual local gateway address is not included in this documentation for privacy.
 
 ---
 
-## 4. Specify the Number of Ping Requests
+## 4. Specify the Number of Requests
 
 ### Command
 
@@ -136,8 +138,8 @@ The `-n` option specifies the number of Echo Requests to send.
 
 ### Result
 
-- Requests Sent: 5
-- Replies Received: 5
+- Packets Sent: 5
+- Packets Received: 5
 - Packet Loss: 0%
 - Average Response Time: 30 ms
 
@@ -145,11 +147,9 @@ The `-n` option specifies the number of Echo Requests to send.
 
 Five ICMP requests were sent and all five received replies.
 
-![Ping Count](screenshots/ping-count.png)
-
 ---
 
-## 5. Specify Packet/Data Size
+## 5. Specify Packet Size
 
 ### Command
 
@@ -159,20 +159,18 @@ ping -n 5 -l 1024 google.com
 
 ### Purpose
 
-To send 5 ping requests with a specified data size of **1024 bytes**.
+To send five ping requests with a data size of 1024 bytes.
 
 ### Result
 
-- Requests Sent: 5
-- Replies Received: 5
+- Packets Sent: 5
+- Packets Received: 5
 - Packet Loss: 0%
 - Average Response Time: 34 ms
 
 ### Observation
 
 All five requests received replies successfully.
-
-![Packet Size](screenshots/ping-packet-size.png)
 
 ---
 
@@ -190,9 +188,9 @@ The `-t` option continuously sends ping requests until manually stopped.
 
 ### Result
 
-The test received continuous replies with **0% packet loss** during the captured test.
+The test received continuous replies with 0% packet loss during the captured test.
 
-The command was stopped using:
+The test was stopped using:
 
 ```text
 Ctrl + C
@@ -201,8 +199,6 @@ Ctrl + C
 ### Observation
 
 Continuous ping can be useful for monitoring network connectivity over a period of time.
-
-![Continuous Ping](screenshots/ping-continuous.png)
 
 ---
 
@@ -216,7 +212,7 @@ ping -4 google.com
 
 ### Purpose
 
-To force the ping command to use **IPv4**.
+To force the ping command to use IPv4.
 
 ### Result
 
@@ -228,8 +224,6 @@ To force the ping command to use **IPv4**.
 ### Observation
 
 The destination was successfully reached using IPv4.
-
-![IPv4 Ping](screenshots/ping-ipv4.png)
 
 ---
 
@@ -243,7 +237,7 @@ ping -6 google.com
 
 ### Purpose
 
-To force the ping command to use **IPv6**.
+To force the ping command to use IPv6.
 
 ### Result
 
@@ -255,8 +249,6 @@ To force the ping command to use **IPv6**.
 ### Observation
 
 The destination was successfully reached using IPv6.
-
-![IPv6 Ping](screenshots/ping-ipv6.png)
 
 ---
 
@@ -270,8 +262,6 @@ ping <unreachable-host>
 
 ### Result
 
-The test produced:
-
 ```text
 Request timed out.
 100% packet loss
@@ -281,17 +271,15 @@ Request timed out.
 
 No ICMP Echo Replies were received from the tested destination.
 
-A timeout does not automatically prove that a host does not exist. The device could be offline, unreachable, or configured to block ICMP traffic.
+A timeout does not automatically mean that a host does not exist. The device could be offline, unreachable, or configured to block ICMP traffic.
 
-> The actual local IP address used during testing is intentionally not included in this README for privacy.
-
-![Unreachable Host](screenshots/ping-unreachable.png)
+> The actual local IP address used during testing is not included in this documentation for privacy.
 
 ---
 
 # Important Ping Options
 
-| Option | Meaning |
+| Option | Purpose |
 |---|---|
 | `-n` | Specifies the number of Echo Requests |
 | `-l` | Specifies the data size of each request |
@@ -303,37 +291,37 @@ A timeout does not automatically prove that a host does not exist. The device co
 
 # Key Concepts
 
-### Packet Loss
+## Packet Loss
 
-The percentage of packets that were sent but did not receive a response.
+Packet loss is the percentage of packets that were sent but did not receive a response.
 
 ```text
 0% loss   → All tested packets received replies
 100% loss → No tested packets received replies
 ```
 
-### Round-Trip Time (RTT)
+## Round-Trip Time
 
-The time taken for a request to travel to the destination and for the reply to return.
+Round-trip time (RTT) is the time taken for a request to travel to the destination and for the reply to return.
 
 It is measured in milliseconds (`ms`).
 
-### Default Gateway
+## Default Gateway
 
-The device, usually a router, that provides a path from the local network to other networks.
+A default gateway is usually a router that provides a path from the local network to other networks.
 
-### Request Timed Out
+## Request Timed Out
 
-This means that the computer did not receive an ICMP reply within the expected time.
+A timeout means that the computer did not receive an ICMP reply within the expected time.
 
 ---
 
 # What I Learned
 
-- `ping` is a basic network diagnostic tool.
-- Ping uses **ICMP Echo Request and Echo Reply** messages.
+- Ping is a basic network diagnostic tool.
+- Ping uses ICMP Echo Request and Echo Reply messages.
 - Ping can be used to test network connectivity.
-- Ping results show packet loss and round-trip response time.
+- Ping results provide packet-loss and response-time information.
 - `-n` controls the number of requests.
 - `-l` specifies the data size.
 - `-t` performs continuous pinging.
@@ -343,20 +331,28 @@ This means that the computer did not receive an ICMP reply within the expected t
 
 ---
 
+# Practical Evidence
+
+Screenshots of the practical tests are stored in the repository as supporting evidence.
+
+The evidence includes:
+
+- Basic Ping
+- Public IP Ping
+- Gateway Ping
+- Specified request count
+- Custom packet size
+- Continuous Ping
+- IPv4 Ping
+- IPv6 Ping
+- Unreachable host test
+
+---
+
 # Conclusion
 
 This practical demonstrated the use of **Ping and ICMP** for basic network diagnostics.
 
-The tests covered:
+The exercises covered connectivity testing, packet loss, response time, packet size, continuous communication, IPv4, IPv6, and unreachable hosts.
 
-- Network connectivity
-- Public IP connectivity
-- Gateway connectivity
-- Packet count
-- Packet size
-- Continuous ping
-- IPv4
-- IPv6
-- Packet loss and timeouts
-
-These concepts provide a foundation for further cybersecurity and networking practicals such as **Nmap, Wireshark, network reconnaissance, and troubleshooting**.
+These concepts provide a foundation for further cybersecurity and networking practicals such as **Nmap, Wireshark, network reconnaissance, and network troubleshooting**.
